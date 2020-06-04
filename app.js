@@ -114,7 +114,7 @@ function breakColors() {
 function displayTimeLeft(time) {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
-    const displayOnScreen = ` 0${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
+    const displayOnScreen = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     timer.textContent = displayOnScreen
 }
 
