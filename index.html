@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+
+<html class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <i class="header__icon-timer far fa-clock"></i>
+            <h1 class="header__title">Pomodoro-tracker</h1>
+            <i class="header__icon-options fas fa-cog"></i>
+        </header>
+        <main class="main">
+            <div class="main__show-timer">
+                <div class="main__timer-section">
+                    <h2 class="main__timer">00 : 00</h2>
+                    <h2 class="main__break-timer">00 : 00</h2>
+                    <div class="main__buttons">
+                        <button class="main__start-button">Start!</button>
+                        <button class="main__stop-button">Stop!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main__show-timer-options">
+                <div class="main__show-timer-div">
+                    <div class="main__show-des">Czas trwania jednego pomodoro</div>
+                    <input type="number" class="main__show-set-time">
+                </div>
+                <div class="main__show-timer-div">
+                    <div class="main__show-des">Czas trwania przerwy</div>
+                    <input type="number" class="main__show-set-breaks">
+                </div>
+                <div class="main__show-timer-div">
+                    <div class="main__show-des">Ilość powtórzeń pomodoro</div>
+                    <input type="number" class="main__show-set-repeat">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js" async defer></script>
+</body>
+
+</html>

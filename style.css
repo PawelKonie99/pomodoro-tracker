@@ -1,0 +1,139 @@
+html{
+    background: #e01818ca;
+    font-family: 'Righteous', cursive;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 800px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 5rem;
+    font-size: 2rem;
+    color: #FFF;
+}
+
+.header__icon-timer {
+    cursor: pointer;
+}
+
+.header__icon-options {
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+}
+
+.main__timer-section {
+    flex: 1;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    margin-top: 2rem;
+    color: #FFF;
+    font-size: 4rem;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.main__buttons {
+    display: flex;
+}
+
+button {
+    font-family: 'Righteous', cursive;
+    border: none;
+    margin: 1.5rem;
+    margin-top: 4rem;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    color: #e01818ca;
+}
+
+.main__show-timer-options, .main__show-timer {
+    margin-top: 2rem;
+}
+
+.main__show-timer-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    display: none;
+}
+
+.main__show-timer-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.main__show-des {
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+/* .main__show-set-time {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background: #dd7b7bca;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+} */
+
+input {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background: #dd7b7bca;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+
+.main__break-timer {
+    display: none;
+}
+
+.un-hide {
+    display: inherit;
+}
+
+.hide {
+    display: none;
+}
+
+.break-color {
+    background: rgba(45, 182, 45, 0.808);
+}
