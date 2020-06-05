@@ -13,6 +13,7 @@ const timerButton = document.querySelector('.header__icon-options')
 const optionsButton = document.querySelector('.header__icon-timer')
 const stopButton = document.querySelector('.main__stop-button')
 const resetButton = document.querySelector('.main__reset-button')
+const buttonElement = document.getElementsByTagName('button')
 
 const timer = document.querySelector('.main__timer')
 const breakTimer = document.querySelector('.main__break-timer')
@@ -22,7 +23,7 @@ const breakAudio = new Audio('break.wav');
 const root = document.documentElement
 const howManyLeft = document.querySelector('.main__how-many')
 
-
+window.document.title = 'Pomodoro-tracker'
 
 let stop = false
 let countingToStop = 0
@@ -59,6 +60,7 @@ function resetAll() {
     clearInterval(breakCountdown)
     displayTimeLeft(0)
     displayBreakTimeLeft(0)
+    displayPomodoroLeft(0)
     stopCountValue = 0
     countingToStop = 0
 
@@ -147,11 +149,16 @@ function breakColors() {
         item.classList.toggle('break-color');
     }
 
+    for (item of buttonElement) {
+        item.classList.toggle('break-font-color');
+    }
+
 }
 
 function displayTimeLeft(time) {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
+    window.document.title = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     const displayOnScreen = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     timer.textContent = displayOnScreen
 }
@@ -159,6 +166,7 @@ function displayTimeLeft(time) {
 function displayBreakTimeLeft(time) {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
+    window.document.title = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     const displayOnScreen = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     breakTimer.textContent = displayOnScreen
 }
