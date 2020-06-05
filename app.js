@@ -149,6 +149,7 @@ function breakColors() {
         item.classList.toggle('break-color');
     }
 
+
     for (item of buttonElement) {
         item.classList.toggle('break-font-color');
     }
