@@ -42,7 +42,7 @@ html{
 
 .main__timer-section {
     flex: 1;
-    width: 300px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,11 +68,16 @@ h2 {
 button {
     font-family: 'Righteous', cursive;
     border: none;
-    margin: 1.5rem;
+    margin: 1rem 1.5rem;
     margin-top: 4rem;
     padding: 0.5rem 2rem;
     border-radius: 5px;
     color: #e01818ca;
+    font-size: 1.3rem;
+}
+
+.main__reset-button {
+    margin-top: 2rem;
 }
 
 .main__show-timer-options, .main__show-timer {
@@ -100,6 +105,12 @@ button {
     color: #FFF;
 }
 
+.main__how-many {
+    margin-top: 1.2rem;
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
 /* .main__show-set-time {
     padding: 1rem 3rem;
     font-size: 1.5rem;
@@ -109,6 +120,9 @@ button {
     border-radius: 5px;
     text-decoration: none;
 } */
+.main__break-timer {
+    display: none;
+}
 
 input {
     padding: 1rem 3rem;
@@ -122,9 +136,6 @@ input {
 
 
 
-.main__break-timer {
-    display: none;
-}
 
 .un-hide {
     display: inherit;

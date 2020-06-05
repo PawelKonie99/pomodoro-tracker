@@ -1,30 +1,40 @@
 let countdown
 let breakCountdown
+const inputElement = document.getElementsByTagName('input')
 const minutesInput = document.querySelector('.main__show-set-time')
 const breakInput = document.querySelector('.main__show-set-breaks')
 const repeatInput = document.querySelector('.main__show-set-repeat')
-const startButton = document.querySelector('.main__start-button')
+
 const timerSection = document.querySelector('.main__show-timer')
 const optionsSection = document.querySelector('.main__show-timer-options')
+
+const startButton = document.querySelector('.main__start-button')
 const timerButton = document.querySelector('.header__icon-options')
 const optionsButton = document.querySelector('.header__icon-timer')
 const stopButton = document.querySelector('.main__stop-button')
+const resetButton = document.querySelector('.main__reset-button')
+
 const timer = document.querySelector('.main__timer')
 const breakTimer = document.querySelector('.main__break-timer')
-const inputElement = document.getElementsByTagName('input')
+
+const startAudio = new Audio('start.wav');
+const breakAudio = new Audio('break.wav');
 const root = document.documentElement
+const howManyLeft = document.querySelector('.main__how-many')
+
 
 
 let stop = false
 let countingToStop = 0
-let stopCountValue
 let repeatCount
-console.log(repeatCount)
+let stopCountValue
+let stopCountBreakValue
 
 startButton.addEventListener('click', startCountDown)
 stopButton.addEventListener('click', stopCounting)
 timerButton.addEventListener('click', toggleDivs)
 optionsButton.addEventListener('click', toggleDivs)
+resetButton.addEventListener('click', resetAll)
 
 function toggleDivs() {
     optionsSection.classList.toggle('un-hide')
@@ -35,31 +45,60 @@ function stopCounting() {
     stop = true
 }
 
+function resetAll() {
+    if (breakTimer.classList.contains('un-hide')) {
+        breakColors()
+    }
+    repeatInput.value = 0
+    breakInput.value = 0
+    minutesInput.value = 0
+    repeatInput.value = ''
+    breakInput.value = ''
+    minutesInput.value = ''
+    clearInterval(countdown)
+    clearInterval(breakCountdown)
+    displayTimeLeft(0)
+    displayBreakTimeLeft(0)
+    stopCountValue = 0
+    countingToStop = 0
+
+}
+
 
 function startCountDown() {
+
+
     let time
     stop = false
     repeatCount = repeatInput.value
     repeatCount = repeatCount - countingToStop
-
-    console.log("start count" + repeatCount)
-    console.log(countingToStop)
-
+    displayPomodoroLeft(repeatCount)
+    if (repeatCount === 0 && minutesInput.value === '') {
+        repeatInput.value = 4
+        repeatCount = 4
+        breakInput.value = 5
+        minutesInput.value = 35
+        stopCountValue = 0
+        displayPomodoroLeft(repeatCount)
+    }
     if (repeatCount > 0) {
-        clearInterval(countdown);
-        // if (stopCountValue > 0) {
-        //     time = time //po przerwie ustawiasz time na zero to własnie robi stopCount
-        //     console.log('stopCount' + stopCountValue)
-        // } else {
-        time = minutesInput.value
-        time *= 60
-        // }
+        if (stopCountValue > 0) {
+            time = stopCountValue // jezeli klikniemy stop i potem wznowimy to czas liczymy od momentu stopu a nie od nowa
+        } else {
+            startAudio.play();
+            clearInterval(countdown);
+            time = minutesInput.value
+            time *= 60
+        }
         intervalOptions(time)
     }
 }
 
 
 function intervalOptions(time) {
+    let breakMinutes
+
+
     clearInterval(countdown)
     countdown = setInterval(() => {
         time--
@@ -67,25 +106,25 @@ function intervalOptions(time) {
             clearInterval(countdown)
             return;
         }
-        // stopCountValue = time
         displayTimeLeft(time)
+        stopCountValue = time
 
         if (time === 0) {
-            const breakMinutes = breakInput.value
-            startBreak(breakMinutes)
-            countingToStop++
-            console.log(repeatCount)
+            breakMinutes = breakInput.value
+            if (breakMinutes === '') {
+                startBreak(5)
+            } else {
+                startBreak(breakMinutes)
+                countingToStop++
+            }
         }
-
     }, 1000)
-
-
 }
 
 function startBreak(timeLeft) {
+    breakAudio.play();
     breakColors()
     timeLeft *= 60
-
     clearInterval(breakCountdown)
     breakCountdown = setInterval(() => {
         timeLeft--
@@ -95,7 +134,6 @@ function startBreak(timeLeft) {
             breakColors()
             return;
         }
-        // stopCountValue = timeLeft
         displayBreakTimeLeft(timeLeft)
     }, 1000)
 }
@@ -121,6 +159,11 @@ function displayTimeLeft(time) {
 function displayBreakTimeLeft(time) {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
-    const displayOnScreen = ` 0${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
+    const displayOnScreen = ` ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds} `
     breakTimer.textContent = displayOnScreen
+}
+
+function displayPomodoroLeft(count) {
+    const displayOnScreen = `Zostało ci ${count} pomodoro do wykonania`
+    howManyLeft.textContent = displayOnScreen
 }
