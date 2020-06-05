@@ -175,6 +175,7 @@ input {
 
     button {
         margin: 2rem;
+        background: #FFF;
     }
 
     i{
@@ -217,6 +218,7 @@ input {
     button {
         margin: 2rem;
         padding: 0.5rem 1rem;
+        background: #FFF;
     }
 
     .main__how-many {
