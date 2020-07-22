@@ -1,5 +1,4 @@
-let countdown
-let breakCountdown
+
 const inputElement = document.getElementsByTagName('input')
 const minutesInput = document.querySelector('.main__show-set-time')
 const breakInput = document.querySelector('.main__show-set-breaks')
@@ -30,6 +29,8 @@ let countingToStop = 0
 let repeatCount
 let stopCountValue
 let stopCountBreakValue
+let countdown
+let breakCountdown
 
 startButton.addEventListener('click', startCountDown)
 stopButton.addEventListener('click', stopCounting)
@@ -85,7 +86,7 @@ function startCountDown() {
     }
     if (repeatCount > 0) {
         if (stopCountValue > 0) {
-            time = stopCountValue // jezeli klikniemy stop i potem wznowimy to czas liczymy od momentu stopu a nie od nowa
+            time = stopCountValue
         } else {
             startAudio.play();
             clearInterval(countdown);
